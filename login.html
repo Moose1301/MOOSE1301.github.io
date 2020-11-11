@@ -1,105 +1,33 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>AmongUS Peeps Bot Dashboard</title>
-<body style="background-color:powderblue;">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Moose File Server Login</title>
+    <link rel="stylesheet" href="linstyle.css">
+  </head>
+  <body>
 
-<style>
-body {
-  text-align: center;
-}
-input {
-  font-size: 200%;
-  margin-top: 5em;
-  text-align: center;
-  width: 26em;
-}
-#content {
-  display: none;
-}
-body.granted #content {
-  display: initial;
-}
-.wrap {
-  display: inline-block;
-  margin-top: 50px;
-  perspective: 800px;
-  perspective-origin: 50% 100px;
-}
-.cube {
-  position: relative;
-  width: 200px;
-  transform-style: preserve-3d;
-}
-.back {
-  transform: translateZ(-100px) rotateY(180deg);
-}
-.right {
-  transform: rotateY(-270deg) translateX(100px);
-  transform-origin: top right;
-}
-.left {
-  transform: rotateY(270deg) translateX(-100px);
-  transform-origin: center left;
-}
-.top {
-  transform: rotateX(-90deg) translateY(-100px);
-  transform-origin: top center;
-}
-.bottom {
-  transform: rotateX(90deg) translateY(100px);
-  transform-origin: bottom center;
-}
-.front {
-  transform: translateZ(100px);
-}
-@keyframes spin {
-  from { transform: rotateY(0); }
-  to { transform: rotateY(360deg); }
-}
-.cube {
-  animation: spin 20s infinite linear;
-}
-@keyframes cube-div {
-         0%     { background-color: #ff0000; }
-     8.333%     { background-color: #ff8000; }
-    16.667%     { background-color: #ffff00; }
-    25.000%     { background-color: #80ff00; }
-    33.333%     { background-color: #00ff00; }
-    41.667%     { background-color: #00ff80; }
-    50.000%     { background-color: #00ffff; }
-    58.333%     { background-color: #0080ff; }
-    66.667%     { background-color: #0000ff; }
-    75.000%     { background-color: #8000ff; }
-    83.333%     { background-color: #ff00ff; }
-    91.667%     { background-color: #ff0080; }
-    100.00%     { background-color: #ff0000; }
-}
-.cube div {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  box-shadow: inset 0 0 60px white;
-  animation: cube-div 5s infinite;
-  font-size: 20px;
-  text-align: center;
-  line-height: 200px;
-  color: rgba(50, 250, 0, 0.5);
-  font-family: sans-serif;
-  text-transform: uppercase;
-}
+<form class="box" action="login" method="post">
+  <h1>Login</h1>
+  <input type="text" name="" placeholder="Username">
+  <input type="password" name="" placeholder="Password">
+  <input type="submit" name="" value="Login">
+</form>
 
-</style>
-<div class="wrap">
-    <div class="cube">
-      <div class="front"></div>
-      <div class="back"></div>
-      <div class="top"></div>
-      <div class="bottom"></div>
-      <div class="left"></div>
-      <div class="right"></div>
-    </div>
-  </div>
+<button onclick="loginWithDisc()" type="button" style="font-size: 16px;" class="btnlogindic"><img src="https://mee6.xyz/assets/a219956caf348a5bc3434b17fce51349.svg" 
+  style="margin-inline-end: 16px;">Login with Discord</button>
+
+
+
+
+
+  <script>
+  //  document.getElementById("btnlogindic").addEventListener("click", loginWithDisc);
+    
+    function loginWithDisc() {
+      // Simulate an HTTP redirect:
+      window.location.replace("https://discord.com/api/oauth2/authorize?client_id=760667628640927805&redirect_uri=http%3A%2F%2Flocalhost%3A8081%2Fapi%2Fdiscord%2Flogin&response_type=code&scope=guilds%20identify");
+    }
+    </script>    
   </body>
 </html>
