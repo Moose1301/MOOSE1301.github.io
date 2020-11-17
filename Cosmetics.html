@@ -1,0 +1,105 @@
+<!DOCT
+YPE html>
+<html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<body>
+<title>Aero Client Cosmetics</title>
+<link rel="icon" href="aeroclient.tk/favicon.ico">
+<h2 id="topTitle">Cosmetics of 58025126-17c2-4fe3-bbc9-81519341f7d6</h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<p id="wings"></p>
+<div class="bg"></div>
+<p id="capes"></p>
+<body class="text-center">
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+<body class="text-center">
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+<header class="masthead mb-auto">
+<div class="inner" style="float: center;">
+<nav class="nav nav-masthead justify-content-center">
+<a class="nav-link navhover" href="http://aeroclient.tk">Home</a>
+</nav>
+</div>
+</header>
+<head>
+<style>
+body, html {
+    height: 100%;
+	background-image: url(./background.png);
+	background-repeat: no-repeat;
+	background-size: cover
+}
+th, td {
+  color: white;
+}
+#topTitle {
+  color: white;
+}
+#wings {
+  position: fixed;
+  left: 145px;
+  top: 64px;
+  color: white;
+}
+#capes {
+  position: fixed;
+  left: 5px;
+  top: 64px;
+  color: white;
+}
+.nav-masthead .nav-link {
+	padding: .25rem 0;
+	font-weight: 700;
+	color: rgba(255, 255, 255, .5);
+	background-color: transparent;
+	border-bottom: .25rem solid transparent
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+	border-bottom-color: rgba(255, 255, 255, .637)
+}
+</style>
+</head>
+<script>
+var capes = "";
+var wings = "";
+var uuid = getUrlVars()["uuid"]
+document.getElementById("topTitle").value = "Cosmetics of " + uuid;
+var rawbase = 'https://raw.githubusercontent.com/';
+var jsonloc = 'Aero-Client/ClientAPI/master/player/';
+$.getJSON(rawbase + jsonloc + uuid, function( data ) {
+    
+    capes += "<table border='2'>"
+    wings += "<table border='2'>"
+	capes += "Capes"
+	wings += "Wings"
+    for (x in data["cosmetics"]) {
+	 
+	  if(data.cosmetics[x].type === "cape") {
+	    var name = data.cosmetics[x].name
+        capes += '<tr><td>"' + name + '",</td></tr>';
+	  }
+	  if(data.cosmetics[x].type === "dragon_wings") {
+        var name = data.cosmetics[x].name
+        wings += '<tr><td>"' + name + '",</td></tr>';
+	  }
+    }
+    capes += "</table>"    	
+    wings += "</table>"    	
+    document.getElementById("capes").innerHTML = capes;  
+    document.getElementById("wings").innerHTML = wings;  
+   //do what you want with data
+});
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+</script>
+</body>
+</html>
