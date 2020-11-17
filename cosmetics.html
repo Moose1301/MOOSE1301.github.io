@@ -80,11 +80,11 @@ $.getJSON(rawbase + jsonloc + uuid, function( data ) {
 	 
 	  if(data.cosmetics[x].type === "cape") {
 	    var name = data.cosmetics[x].name
-        capes += '<tr><td>"' + name + '",</td></tr>';
+        capes += '<tr><td>' + name + ',</td></tr>';
 	  }
 	  if(data.cosmetics[x].type === "dragon_wings") {
         var name = data.cosmetics[x].name
-        wings += '<tr><td>"' + name + '",</td></tr>';
+        wings += '<tr><td>' + name + ',</td></tr>';
 	  }
     }
     capes += "</table>"    	
