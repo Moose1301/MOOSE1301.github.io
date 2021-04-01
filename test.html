@@ -1,41 +1,17 @@
 <!DOCTYPE html>
 <html>
 <body>
+<body onload="onLoad()"> 
+<h1>Testing</h1>
 
-<button onclick="myFunction()">Click me</button>
-
-<p id="demo"></p>
-<div class="scare">
-<video id="video" class="video" src="https://printscr.com/video.mp4" loop></video>
-
+<video width="1920" height="1080" controls autoplay muted >
+  <source src="video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 <script>
-function myFunction() {
-   const video = document.getElementById("video");
-   const overlay = document.getElementById("overlay");
+function onLoad() {
 
-   let hasClicked;
-
-   window.onbeforeunload = function( ) {
-      if(hasClicked) return true;
-   };
-
-
-   function videoClick(event) {
-       if(event) event.preventDefault();
-      // if not fullscreen
-      const { documentElement } = document;
-      if(documentElement.requestFullscreen) documentElement.requestFullscreen();
-      else if(documentElement.mozRequestFullScreen) documentElement.mozRequestFullScreen();
-      else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
-      else if(documentElement.msRequestFullscreen) full.msRequestFullscreen();
-   }
-   video.addEventListener("click", videoClick);
-   event.preventDefault();
-   if(!hasClicked) hasClicked = true;
-   video.play();
-   videoClick();
 }
 </script>
-
 </body>
 </html>
