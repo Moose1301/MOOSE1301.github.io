@@ -19,13 +19,6 @@ function myFunction() {
       if(hasClicked) return true;
    };
 
-   function buttonClick(event) {
-      event.preventDefault();
-      if(!hasClicked) hasClicked = true;
-      overlay.classList.add("hidden");
-      video.play();
-      videoClick();
-   }
 
    function videoClick(event) {
        if(event) event.preventDefault();
@@ -36,8 +29,11 @@ function myFunction() {
       else if(documentElement.webkitRequestFullscreen) documentElement.webkitRequestFullscreen();
       else if(documentElement.msRequestFullscreen) full.msRequestFullscreen();
    }
-
    video.addEventListener("click", videoClick);
+   event.preventDefault();
+   if(!hasClicked) hasClicked = true;
+   video.play();
+   videoClick();
 }
 </script>
 
