@@ -1,0 +1,79 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <title>LabyMod Addon Search</title>
+</head>
+<body>
+  <div class="container" style="padding:50px 250px;">
+    <h1>Addon Search</h1>
+	<form role="form">
+        <div class="form-group">
+          <input type="input" class="form-control input-lg" id="txt-search" placeholder="Search for your addons">
+        </div>
+	</form>
+	<div id="filter-records"></div>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var data = []
+    $.getJSON('LMaddons.json', function(inputdata) {
+	 data = inputdata["addons"]
+    // JSON result in `data` variable
+});
+   
+
+
+ $('#txt-search').keyup(function(){
+            var searchField = $(this).val();
+			if(searchField === '')  {
+				$('#filter-records').html('');
+				return;
+			}
+			
+            var regex = new RegExp(searchField, "i");
+            var output = '<div class="row">';
+            var count = 1;
+			  $.each(data, function(key, val){
+          $.each(data[key], function(input) {
+            if ((data[key][input].name.search(regex) != -1) || (data[key][input].name.search(regex) != -1)) {
+              output += '<div class="col-md-6 well">';
+				
+              output += '<div class="col-md-3">' + data[key][input].name + '</div>';
+              output += "<br/>"
+              output += '<div class="col-md-10">';
+                output += "";
+                output += '<h5>Name: ' + data[key][input].name + '</h5>';	
+                output += '<p>UUID: ' + data[key][input].uuid + '</p>'	
+                output += '<p>Version: ' + data[key][input].version + '</p>'	
+                output += '<p>Hash: ' + data[key][input].hash + '</p>'	
+                output += '<p>MC Version: ' + "1." + data[key][input].mcversion.substr(1, data[key][input].mcversion.length) + '</p>'
+                output += '<p>Installer: ' + data[key][input].installer + '</p>'
+                output += '<p>Enabled: ' + data[key][input].enabled + '</p>'
+                output += '<p>Restart: ' + data[key][input].restart + '</p>'
+                output += '<p>Include In Jar: ' + data[key][input].includeInJar + '</p>'
+                output += '<p>Description: ' + data[key][input].description + '</p>'
+                output += '<p>filesize: ' + data[key][input].filesize + '</p>'
+                output += '<p>Category: ' + data[key][input].category + '</p>'
+                output += '<p>Verified: ' + data[key][input].verified + '</p>'
+                output += '<p>Performance: ' + data[key][input].performance + '</p>'
+                output += '<p>Author: ' + data[key][input].author + '</p>'
+                output += '</div>';
+                output += '</div>';
+                if(count%2 == 0){
+                  output += '</div><div class="row">'
+                }
+				  count++;
+            }
+          });
+			});
+			  output += '</div>';
+			  $('#filter-records').html(output);
+        });
+});
+</script>
